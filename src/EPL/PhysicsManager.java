@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class PhysicsManager {
     private static ArrayList<PhysicsBody> bodies = new ArrayList<PhysicsBody>();
+    public static final double PRECISION = 1;
+
     public static void reqister(PhysicsBody b) {
         bodies.add(b);
     }
