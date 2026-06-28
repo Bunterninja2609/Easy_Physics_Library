@@ -1,3 +1,5 @@
+package EPL;
+
 public class Hitbox {
     private HITBOX_SHAPE shape;
     private Collider parent;
@@ -6,6 +8,7 @@ public class Hitbox {
     private double width;
     private double height;
     private double radius;
+
 
     public boolean collidesWith(Hitbox b) {
         Hitbox a = this;
@@ -60,5 +63,30 @@ public class Hitbox {
 
     public HITBOX_SHAPE getShape() {
         return shape;
+    }
+
+    public double getLeftMostX(){
+        return switch (shape) {
+            case RECTANGLE -> getX();
+            case CIRCLE -> getX() - getRadius();
+        };
+    }
+    public double getTopMostY(){
+        return switch (shape) {
+            case RECTANGLE -> getY();
+            case CIRCLE -> getY() - getRadius();
+        };
+    }
+    public double getRightMostX(){
+        return switch (shape) {
+            case RECTANGLE -> getX() + getWidth();
+            case CIRCLE -> getX() + getRadius();
+        };
+    }
+    public double getDownMostY(){
+        return switch (shape) {
+            case RECTANGLE -> getY() + getHeight();
+            case CIRCLE -> getY() + getRadius();
+        };
     }
 }
